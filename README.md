@@ -36,4 +36,4 @@ $ bundle
 Thanks to the Chrome authors, and to Mike McCandless for writing a Python version.
 Thanks to Jason Toy for the original cld v1.0 ruby port.
 
-Licensed the same as Chrome.
+Licensed the same as https://github.com/CLD2Owners/cld2.
