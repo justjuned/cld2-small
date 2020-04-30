@@ -20,7 +20,7 @@ CLD.detect_language("plus ça change, plus c'est la même chose")
 
 ## Installation
 
-Add this line to your application's Gemfile:CLD2Owners
+Add this line to your application's Gemfile:
 
 ```ruby
 gem 'cld2-small', require 'cld'
