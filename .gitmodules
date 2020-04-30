@@ -1,0 +1,3 @@
+[submodule "ext/cld/cld2"]
+	path = ext/cld/cld2
+	url = https://github.com/CLD2Owners/cld2.git
