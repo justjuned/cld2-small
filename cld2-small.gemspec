@@ -2,11 +2,11 @@
 require File.expand_path('../lib/cld/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Alessandro Dal Grande", "Jason Toy"]
-  gem.email         = ["jtoy@jtoy.net"]
+  gem.authors       = ["Alessandro Dal Grande", "Jason Toy", "Juned Shaikh"]
+  gem.email         = ["juned1234all@gmail.com"]
   gem.description   = %q{Compact Language Detection for Ruby}
   gem.summary       = %q{Compact Language Detection for Ruby}
-  gem.homepage      = "https://github.com/BanjoInc/cld2"
+  gem.homepage      = "https://github.com/justjuned/cld2-small"
 
   # gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   gem.files         = Dir["ext/**/*", "lib/**/*"]
