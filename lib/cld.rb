@@ -23,6 +23,6 @@ module CLD
   class ReturnValue < FFI::Struct
     layout :name, :string, :code, :string, :reliable, :bool
   end
-  
+
   attach_function "detect_language_ext", "detectLanguageThunkInt", [:buffer_in, :bool], ReturnValue.by_value
 end

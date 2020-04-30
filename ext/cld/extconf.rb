@@ -21,13 +21,13 @@ $objs = ["cld2/internal/cldutil.o",
   "cld2/internal/cld2_generated_cjk_compatible.o",
   "cld2/internal/cld_generated_cjk_delta_bi_4.o",
   "cld2/internal/generated_distinct_bi_0.o",
-  "cld2/internal/cld2_generated_quadchrome0122_2.o",
-  "cld2/internal/cld2_generated_deltaoctachrome0122.o",
-  "cld2/internal/cld2_generated_distinctoctachrome0122.o",
-  "cld2/internal/cld_generated_score_quad_octa_0122_2.o",
+  "cld2/internal/cld2_generated_quadchrome_2.o",
+  "cld2/internal/cld2_generated_deltaoctachrome.o",
+  "cld2/internal/cld2_generated_distinctoctachrome.o",
+  "cld2/internal/cld_generated_score_quad_octa_2.o",
   "thunk.o"]
 
-$CXXFLAGS += " -std=c++98"
+$CXXFLAGS +=" -std=c++98"
 
 if have_library('stdc++')
   create_makefile('libcld2')
