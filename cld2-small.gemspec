@@ -4,8 +4,8 @@ require File.expand_path('../lib/cld/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Alessandro Dal Grande", "Jason Toy", "Juned Shaikh"]
   gem.email         = ["juned1234all@gmail.com"]
-  gem.description   = %q{Compact Language Detection2.0 for Ruby}
-  gem.summary       = %q{Compact Language Detection2.0 for Ruby}
+  gem.description   = %q{A Ruby gem for Compact Language Detection 2.0, providing language detection capabilities.}
+  gem.summary       = %q{Language detection for Ruby using Compact Language Detection 2.0}
   gem.homepage      = "https://github.com/justjuned/cld2-small"
   gem.license       = "Apache-2.0"
 
@@ -17,7 +17,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = CLD::VERSION
 
-  gem.add_dependency "ffi", "1.12.0"
+  gem.add_dependency "ffi", "~> 1.17.1"
 
-  gem.add_development_dependency "rspec", "~> 2.14.1"
+  gem.add_development_dependency "rspec", "~> 3.10"
 end
