@@ -10,11 +10,17 @@ Gem::Specification.new do |gem|
   gem.license       = "Apache-2.0"
 
   # gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  gem.files         = Dir["ext/**/*", "lib/**/*"]
+  gem.files = Dir[
+    "ext/**/*.{rb,h,cc,c}",
+    "lib/**/*.rb",
+    "ext/cld/cld2/**/*",  # Include all CLD2 source files
+    "README*",
+    "LICENSE*"
+  ]
   gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   gem.extensions    = ["ext/cld/extconf.rb"]
-  gem.name          = "cld2"
-  gem.require_paths = ["lib"]
+  gem.name          = "cld2-small"
+  gem.require_paths = ["lib", "ext"]  # Add ext to require paths
   gem.version       = CLD::VERSION
 
   gem.add_dependency "ffi", "~> 1.17.1"

@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
-#include "cld2/internal/lang_script.h"
-#include "cld2/public/compact_lang_det.h"
-#include "cld2/public/encodings.h"
+#include "./cld2/internal/lang_script.h"
+#include "./cld2/public/compact_lang_det.h"
+#include "./cld2/public/encodings.h"
 
 using namespace CLD2;
 

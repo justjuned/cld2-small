@@ -1,6 +1,10 @@
 require 'mkmf'
 
-# HACK: mkmf doesn't support multiple subdirs for the same library
+# Add include paths
+$INCFLAGS = "-I$(srcdir) -I$(srcdir)/cld2 #{$INCFLAGS}"
+$CXXFLAGS += " -std=c++98"
+
+# List object files
 $objs = ["cld2/internal/cldutil.o",
   "cld2/internal/cldutil_shared.o",
   "cld2/internal/compact_lang_det.o",
@@ -27,16 +31,16 @@ $objs = ["cld2/internal/cldutil.o",
   "cld2/internal/cld_generated_score_quad_octa_2.o",
   "thunk.o"]
 
-$CXXFLAGS +=" -std=c++98"
-
 if have_library('stdc++')
-  create_makefile('libcld2')
+  # Create makefile with the correct target
+  create_makefile('cld/libcld2')
 end
 
-# to clean up object files under internal subdirectory.
-open('Makefile', 'a') do |f|
-  f.write <<EOS
+# Add clean target
+File.open('Makefile', 'a') do |f|
+  f.write <<-EOF
 
-  CLEANOBJS := $(CLEANOBJS) cld2/internal/*.#{CONFIG["OBJEXT"]}
-EOS
+clean-local:
+\t$(Q)rm -f $(CLEANOBJS) cld2/internal/*.#{CONFIG["OBJEXT"]}
+  EOF
 end
