@@ -23,8 +23,19 @@ module CLD
 
   ffi_lib lib_path
 
-  def self.detect_language(text, is_plain_text=true, best_effort=false)
-    result = detect_language_ext(text.to_s, is_plain_text, best_effort)
+  def self.detect_language(text, options = {})
+    is_plain_text = options.fetch(:is_plain_text, true)
+    best_effort = options.fetch(:best_effort, false)
+    tld_hint = options.fetch(:tld_hint, nil)
+    content_language_hint = options.fetch(:content_language_hint, nil)
+    score_as_quads = options.fetch(:score_as_quads, false)
+
+    result = detect_language_ext(text.to_s,
+                                 is_plain_text,
+                                 best_effort,
+                                 tld_hint,
+                                 content_language_hint,
+                                 score_as_quads)
     Hash[ result.members.map {|member| [member.to_sym, result[member]]} ]
   end
 
@@ -34,5 +45,7 @@ module CLD
     layout :name, :string, :code, :string, :reliable, :bool
   end
 
-  attach_function "detect_language_ext", "detectLanguageThunkInt", [:buffer_in, :bool, :bool], ReturnValue.by_value
+  attach_function "detect_language_ext", "detectLanguageThunkInt",
+                  [:buffer_in, :bool, :bool, :string, :string, :bool],
+                  ReturnValue.by_value
 end
