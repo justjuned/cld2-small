@@ -13,28 +13,35 @@ typedef struct {
 } RESULT;
 
 extern "C" {
-  RESULT detectLanguageThunkInt(const char * src, bool is_plain_text) {
+  RESULT detectLanguageThunkInt(const char * src, bool is_plain_text, bool best_effort) {
     bool is_reliable;
     Language plus_one = UNKNOWN_LANGUAGE;
-    const char* tld_hint = NULL;
-    int encoding_hint = UNKNOWN_ENCODING;
-    Language language_hint = UNKNOWN_LANGUAGE;
+    const char* tld_hint_val = NULL;
+    int encoding_hint_val = UNKNOWN_ENCODING;
+    Language language_hint_val = UNKNOWN_LANGUAGE;
+
+    CLDHints cld_hints = {NULL, tld_hint_val, encoding_hint_val, language_hint_val};
+    int flags = 0;
+    if (best_effort) {
+      flags |= kCLDFlagBestEffort;
+    }
 
     double normalized_score3[3];
     Language language3[3];
     int percent3[3];
     int text_bytes;
+    ResultChunkVector resultchunkvector;
 
     Language lang;
     lang = ExtDetectLanguageSummary(src,
                           strlen(src),
                           is_plain_text,
-                          tld_hint,
-                          encoding_hint,
-                          language_hint,
+                          &cld_hints,
+                          flags,
                           language3,
                           percent3,
                           normalized_score3,
+                          &resultchunkvector,
                           &text_bytes,
                           &is_reliable);
 

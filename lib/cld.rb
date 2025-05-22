@@ -1,4 +1,4 @@
-require "cld/version"
+require_relative "cld/version"
 require "ffi"
 
 module CLD
@@ -23,8 +23,8 @@ module CLD
 
   ffi_lib lib_path
 
-  def self.detect_language(text, is_plain_text=true)
-    result = detect_language_ext(text.to_s, is_plain_text)
+  def self.detect_language(text, is_plain_text=true, best_effort=false)
+    result = detect_language_ext(text.to_s, is_plain_text, best_effort)
     Hash[ result.members.map {|member| [member.to_sym, result[member]]} ]
   end
 
@@ -34,5 +34,5 @@ module CLD
     layout :name, :string, :code, :string, :reliable, :bool
   end
 
-  attach_function "detect_language_ext", "detectLanguageThunkInt", [:buffer_in, :bool], ReturnValue.by_value
+  attach_function "detect_language_ext", "detectLanguageThunkInt", [:buffer_in, :bool, :bool], ReturnValue.by_value
 end
